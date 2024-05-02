@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <style >
+    
+body {
+  font-family: sans-serif; 
+  margin: 0;
+  padding: 0;
+}
+
+
+h1 {
+  font-size: 2em;
+  margin: 1em 0;
+  text-align: center;
+}
+
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-list li {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px; 
+  border-bottom: 1px solid #ddd; 
+}
+
+.category-list li a {
+  color: #333; 
+  text-decoration: none;
+  transition: all 0.2s ease-in-out; 
+}
+
+.category-list li a:hover {
+  background-color: #eee; 
+}
+
+
+.category-list li span {
+  flex: 1; 
+  text-align: left; 
+}
+
+.category-list li span:nth-child(3) { 
+  color: #aaa; 
+}
+
+
+a[href^="/categories/"] { 
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 0 5px; 
+  transition: all 0.2s ease-in-out; 
+}
+
+a[href^="/categories/"]:hover {
+  background-color: #eee;
+  color: #000; 
+}
+    </style>
+</head>
+<body>
+    <h1>Categories</h1>
+  
+    <ul>
+        <li th:each="category : ${categories}">
+            <a th:href="@{/categories/{cid}(cid=category.cid)}">
+             <span th:text="${category.cid}"></span>
+                <span th:text="${category.cname}"></span>
+                <span th:text="${category.level}"></span>          
+            </a>
+           </li>
+           
+           
+           
+            
+    </ul>
+    <a href="">Create Category</a><br>
+    
+    <a th:href="@{/categories/{cid}(cid=category.cid)}">update</a>
+     <br>
+    <a th:href="@{/categories/{cid}(cid=category.cid)}">delete</a>
+</body>
+</html>

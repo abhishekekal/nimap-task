@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>products</title>
+<style >
+
+body {
+  font-family: sans-serif; 
+  margin: 0;
+  padding: 0;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #333; 
+  text-decoration: none; 
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  display: inline-block;
+  transition: all 0.2s ease-in-out; 
+}
+
+a:hover {
+  background-color: #eee;
+  color: #000; 
+}
+
+
+.product-item { 
+  display: flex; 
+  align-items: center;
+}
+
+.product-item span:first-child { 
+  flex: 0 0 20%;
+  text-align: right;
+}
+
+.product-item span:nth-child(2) { 
+  flex: 1; 
+}
+
+
+.action-link {
+  background-color: #ddd;
+  color: #000; 
+  margin-left: 10px; 
+}
+
+.action-link:hover {
+  background-color: #ccc; 
+}
+
+
+    .product-item:hover {
+      transform: scale(1.02); 
+    }
+
+    .action-link:hover {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    }
+
+ 
+    .action-link {
+      padding: 8px 15px; 
+      cursor: pointer;
+      border: none; 
+    }
+
+
+    body {
+      background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+    }
+
+    .product-item {
+      border: 1px solid #ddd;
+      border-radius: 5px; 
+      padding: 10px; 
+    }
+
+    .action-link:before {
+      content: "\f067"; 
+      font-family: FontAwesome; 
+      margin-right: 5px; 
+    }
+</style>
+</head>
+<body>
+<h1>product</h1>
+
+<ul>
+        <li th:each="pro : ${products}">
+            <a th:href="@{/products/{pid}(pid=products.pid)}">
+             <span th:text="${pro.pid}"></span>
+                <span th:text="${pro.pname}"></span>
+                 
+              
+            </a>
+        </li>
+    </ul>
+ 
+    <a href="cproduct" >Create products</a><br>
+    
+    
+<a th:href="@{/products/{pid}(pid=Product.pid)}"  method="DELETE">Delete</a>
+
+  <br>
+  
+ <a th:href="@{/products/{pid}(pid=(product.pid)}" method="PUT" > update</a>
+</body>
+</html>
